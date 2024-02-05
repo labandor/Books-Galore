@@ -4,6 +4,7 @@ let url2 = "https://covers.openlibrary.org/b/";
 let button = document.querySelector(".button");
 let input = document.querySelector(".input");
 let h2 = document.querySelector(".title");
+let author = "";
 
 button.addEventListener("click", search);
 
