@@ -8,10 +8,12 @@ let author = "Brandon Sanderson";
 let authorTest = "";
 let authorKey = "";
 let wrap = 0;
-let wrap2 = 10;
+let wrap2 = 9;
 let books = {};
 let button2 = document.querySelector(".next");
 let url3 = "https://openlibrary.org";
+let titleArr = [];
+let og = "";
 
 button.addEventListener("click", search);
 button2.addEventListener("click",display2);
@@ -20,7 +22,7 @@ button2.addEventListener("click",display2);
 function search(e) {
 	e.preventDefault();
 	wrap = 0;
-	wrap2 = 10;
+	wrap2 = 9;
 	//console.log(input.value);
 	let title = input.value;
 	const words = title.split(" ");
@@ -32,6 +34,8 @@ function search(e) {
 		return res.json();
 	})
 	.then(res=> {
+		titleArr.push(res.docs[0].title);
+		og = res.docs[0].title;
 		//console.log(res.docs[0].cover_i);
 		id = res.docs[0].cover_i;
 		document.querySelector(".here").src=`${url2}id/${id}-L.jpg`;
@@ -58,29 +62,28 @@ function display(res) {
 	//console.log(res);
 	button2.style.display = "block";
 	document.querySelector(".author").innerText = `More Books By ${author[0]}`
-	if(wrap2>=res.numFound){
+	if(wrap2 >= res.numFound && wrap >= res.numFound){
 		wrap = 0;
-		wrap2 = 10;
+		wrap2 = 9;
+		titleArr = [og];
 	}
-	if(wrap2>res.numFound){
+	if(wrap2 >= res.numFound && wrap < res.numFound){
 		wrap2 = res.numFound;
 	}
 	let x = document.querySelector(".books");
 	x.innerHTML = "";
-	for(let i = 0+wrap; i < wrap2; i++){
-		let english = true;
+	for(let i = wrap; i < wrap2; i++){
+		let english = false;
 		if(res.docs[i]?.language?.length){
 			for(let j = 0; j < res.docs[i].language.length; j++) {
 				if (res.docs[i].language[j] === "eng") {
 					english = true;
 				}
-				else {
-					english = false;
-				}
 			}
 		}
 		let y = "";
-		if(english && res.docs[i]?.cover_i) {
+		if(english && res.docs[i]?.cover_i && !titleArr.includes(res.docs[i].title)) {
+			titleArr.push(res.docs[i].title);
 			fetch(`${url3}${res.docs[i].key}.json`)
 			.then(resp=> {
 				return resp.json();
@@ -103,21 +106,13 @@ function display(res) {
 				}
 			})
 		}
-		else {
-			if(wrap2<res.numFound){
+		else if(wrap2<=res.numFound){
 				wrap2++;
 				wrap++;
-			}
 		}
 	}
-	if(wrap+20<=res.numFound) {
-		wrap += 10;
-		wrap2 += 10;
-	}
-	else {
-		wrap += 10;
-		wrap2 = wrap2 + (res.numFound - wrap2);
-	}
+	wrap += 9;
+	wrap2 += 9;
 }
 
 function display2(e) {
