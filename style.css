@@ -1,10 +1,58 @@
+html {
+	box-sizing: border-box;
+}
+
 body {
 	background-color: lightsalmon;
 	display: grid;
+	grid-template: .5fr .5fr 3fr .5fr .5fr 10fr .5fr .5fr / 1fr 1fr;
 }
 
+header {
+	grid-area:1/1/2/3;
+}
 
+.here {
+	grid-area:3/1/4/2;
+	margin: auto;
+}
+
+.title {
+	grid-area:2/1/3/3;
+	margin: auto;
+}
+
+.main {
+	grid-area:3/2/4/3;
+	max-height: 400px;
+	display: flex;
+	justify-content: center;
+}
+
+.books {
+	grid-area:6/1/7/3;
+	display:grid;
+	grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+}
+
+.author {
+	grid-area:5/1/6/3;
+}
 
 .next {
+	grid-area:7/1/8/3;
 	display: none;
+}
+
+.search {
+	margin: auto;
+	grid-area:4/1/5/3;
+}
+
+.more {
+	grid-area:7/1/8/3;
+}
+
+.rec {
+	max-height: 250px;
 }
