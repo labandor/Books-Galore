@@ -3,18 +3,25 @@ html {
 }
 
 body {
-	background-color: lightsalmon;
+	width: 100%;
+	margin:0;
+	background-color: white;
 	display: grid;
-	grid-template: .5fr .5fr 3fr .5fr .5fr 10fr .5fr .5fr / 1fr 1fr;
+	grid-template: 75px 75px .25fr 75px 75px 1fr 75px 75px / 1fr 1fr;
 }
 
 header {
 	grid-area:1/1/2/3;
+	background-color: lightsalmon;
+	max-height: 75px;
 }
 
 .here {
+	display: none;
 	grid-area:3/1/4/2;
-	margin: auto;
+	background-color: white;
+	border:solid 5px black;
+	margin: 10px auto;
 }
 
 .title {
@@ -23,10 +30,10 @@ header {
 }
 
 .main {
-	grid-area:3/2/4/3;
-	max-height: 400px;
 	display: flex;
 	justify-content: center;
+	padding-left:10px;
+	padding-right:10px;
 }
 
 .books {
@@ -47,12 +54,62 @@ header {
 .search {
 	margin: auto;
 	grid-area:4/1/5/3;
+	padding-top: 5px;
 }
 
 .more {
 	grid-area:7/1/8/3;
+	padding-top:15px;
 }
 
 .rec {
-	max-height: 250px;
+}
+
+.bigmain {
+	grid-area:3/2/4/3;
+}
+
+.big {
+	display: none;
+}
+
+.rec img {
+	border: solid black 5px;
+	height: 300px;
+	max-width: 250px;
+}
+
+.rec p {
+	padding-right: 10px;
+}
+
+.galore {
+	display: flex;
+	align-items: center;
+	margin: 20px;
+}
+
+.start {
+	grid-area: 3/1/4/3;
+	display: flex;
+	justify-content: center;
+	object-fit: fill;
+}
+
+@media (max-width: 455px) {
+	body {
+		display: flex;
+		flex-direction: column;
+	}
+	.books {
+		display:flex;
+		flex-direction: column;
+	}
+}
+
+@media (max-width:650px) {
+	body {
+		display:flex;
+		flex-direction: column;
+	}
 }
