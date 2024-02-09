@@ -10,8 +10,10 @@ We then give those 9 books the same service as the original book, but on a small
 
 There is also a button to see the next 9 books and then the next 9 until it eventually wraps back to the begginging.
 
+In order to accomplish all of this I used the Open Library API without which none of this would've been possible.
+
 This is Books Galore and it's been a pleasure.
 
-Bellow is my original Wire Frame:
+Below is my original Wire Frame:
 
 ![screenshot](wireframe.jpg)
