@@ -3,17 +3,19 @@ html {
 }
 
 body {
-	width: 100%;
+	min-width: 100%;
 	margin:0;
 	background-color: white;
 	display: grid;
-	grid-template: 75px 75px .25fr 75px 75px 1fr 75px 75px / 1fr 1fr;
+	grid-template: 75px 75px .25fr 75px 75px 1fr 75px 75px / 1fr 1fr; 
 }
 
 header {
 	grid-area:1/1/2/3;
+	min-width:100%;
 	background-color: lightsalmon;
 	max-height: 75px;
+	margin:0 auto;
 }
 
 .here {
@@ -22,6 +24,7 @@ header {
 	background-color: white;
 	border:solid 5px black;
 	margin: 10px auto;
+	max-width: 100%;
 }
 
 .title {
@@ -60,23 +63,28 @@ header {
 .more {
 	grid-area:7/1/8/3;
 	padding-top:15px;
+	padding-bottom:10px;
 }
 
 .rec {
+	padding-left: 10px;
+	padding-right:10px;
 }
 
 .bigmain {
 	grid-area:3/2/4/3;
+	padding-left: 20px;
 }
 
 .big {
 	display: none;
+	padding-left:10px;
 }
 
 .rec img {
 	border: solid black 5px;
 	height: 300px;
-	max-width: 250px;
+	max-width: 200px;
 }
 
 .rec p {
@@ -91,25 +99,63 @@ header {
 
 .start {
 	grid-area: 3/1/4/3;
+	max-width: 100%;
 	display: flex;
 	justify-content: center;
-	object-fit: fill;
 }
 
-@media (max-width: 455px) {
+@media (max-width:650px) {
 	body {
 		display: flex;
 		flex-direction: column;
+		margin: 0;
 	}
 	.books {
 		display:flex;
 		flex-direction: column;
 	}
+	
+	.start img {
+
+		width: 300px;
+	}
 }
 
-@media (max-width:650px) {
+@media (max-width:750px) {
 	body {
 		display:flex;
 		flex-direction: column;
+		margin:0;
 	}
+
+	.start img {
+		max-width: 600px;
+	}
+}
+
+@media (max-width:390px){
+	.here {
+		max-width:200px;
+	}
+
+	.recs img {
+		max-width:200px;
+	}
+
+	.start img {
+		max-width: 200px;
+	}
+
+	h1 {
+		font-size: 25px;
+	}
+}
+
+footer {
+	grid-area: 8/1/9/3;
+	background-color:lightsalmon;
+	display: flex;
+	justify-content:flex-end;
+	align-items:flex-end;
+	padding-right: 15px;
 }
