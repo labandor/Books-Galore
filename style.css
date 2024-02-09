@@ -47,11 +47,13 @@ header {
 
 .author {
 	grid-area:5/1/6/3;
+	padding-left: 10px;
 }
 
 .next {
 	grid-area:7/1/8/3;
 	display: none;
+	margin-left: 10px;
 }
 
 .search {
@@ -150,6 +152,7 @@ header {
 		font-size: 25px;
 	}
 }
+
 
 footer {
 	grid-area: 8/1/9/3;
